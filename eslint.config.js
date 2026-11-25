@@ -18,4 +18,17 @@ export default tseslint.config(
       ...reactHooks.configs.recommended.rules,
     },
   },
+  {
+    // game.js is a classic browser script and game.test.js is a CommonJS
+    // node:test suite; neither is part of the Vite/TypeScript module graph.
+    files: ['game.js', 'game.test.js'],
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: 'commonjs',
+      globals: { ...globals.browser, ...globals.commonjs },
+    },
+    rules: {
+      '@typescript-eslint/no-require-imports': 'off',
+    },
+  },
 );
