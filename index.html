@@ -108,6 +108,11 @@
         color: #6fdfe9;
       }
 
+      .cell.x,
+      .cell.o {
+        animation: mark-pop 180ms ease-out;
+      }
+
       #new-game {
         width: 100%;
         min-height: 3rem;
@@ -126,6 +131,68 @@
         background: #ab9fff;
         outline: 3px solid #fff;
         outline-offset: 2px;
+      }
+
+      .result-overlay {
+        position: fixed;
+        z-index: 10;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+        background: #090b1466;
+      }
+
+      .result-overlay.show {
+        visibility: visible;
+        animation: overlay-life 3.2s ease-in-out both;
+      }
+
+      .result-message {
+        position: relative;
+        z-index: 2;
+        margin: 0;
+        padding: 0.3em 0.55em;
+        color: #fff;
+        font-size: clamp(4rem, 18vw, 10rem);
+        font-weight: 900;
+        line-height: 0.9;
+        letter-spacing: -0.07em;
+        text-align: center;
+        text-shadow: 0 0 2rem #8e7dff, 0 0.35rem 0 #111524;
+      }
+
+      .result-overlay.show .result-message {
+        animation: result-pop 3.2s ease-in-out both;
+      }
+
+      .fireworks {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      @keyframes overlay-life {
+        0% { opacity: 0; }
+        12%, 76% { opacity: 1; }
+        100% { opacity: 0; }
+      }
+
+      @keyframes result-pop {
+        0% { opacity: 0; transform: scale(0.35) rotate(-4deg); }
+        14% { opacity: 1; transform: scale(1.08) rotate(1deg); }
+        22%, 76% { opacity: 1; transform: scale(1) rotate(0); }
+        100% { opacity: 0; transform: scale(1.12); }
+      }
+
+      @keyframes mark-pop {
+        0% { transform: scale(0.72); }
+        70% { transform: scale(1.06); }
+        100% { transform: scale(1); }
       }
     </style>
   </head>
@@ -149,6 +216,15 @@
         <button id="new-game" type="button">New game</button>
       </section>
     </main>
+    <div
+      id="result-overlay"
+      class="result-overlay"
+      aria-live="assertive"
+      aria-atomic="true"
+    >
+      <canvas id="fireworks" class="fireworks" aria-hidden="true"></canvas>
+      <p id="result-message" class="result-message"></p>
+    </div>
     <script src="game.js"></script>
   </body>
 </html>
