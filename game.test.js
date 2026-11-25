@@ -13,6 +13,16 @@ test("detects a win and stops further moves", () => {
   assert.equal(game.play(5), false);
 });
 
+test("detects a win by O", () => {
+  const game = new TicTacToe();
+
+  [0, 1, 2, 4, 6, 7].forEach((index) => game.play(index));
+
+  assert.equal(game.winner, "O");
+  assert.equal(game.getStatus(), "O wins!");
+  assert.equal(game.gameOver, true);
+});
+
 test("detects a full-board draw", () => {
   const game = new TicTacToe();
 
