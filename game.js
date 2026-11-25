@@ -9,16 +9,6 @@ const WINNING_LINES = [
   [2, 4, 6],
 ];
 
-const DEBUG_SYMBOLS = ["X", "O"];
-
-function debugCellLabel(index, value) {
-  return `Cell ${index}: ${value || "empty"}`;
-}
-
-function buildDebugSummary(game) {
-  return `${game.currentPlayer}:${game.board.join("")}`;
-}
-
 class TicTacToe {
   constructor() {
     this.reset();
@@ -38,7 +28,7 @@ class TicTacToe {
       this.isDraw = true;
       this.gameOver = true;
     } else {
-      this.currentPlayer = this.currentPlayer == "X" ? "O" : "X";
+      this.currentPlayer = this.currentPlayer === "X" ? "O" : "X";
     }
 
     return true;
