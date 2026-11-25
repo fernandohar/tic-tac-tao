@@ -9,16 +9,6 @@ const WINNING_LINES = [
   [2, 4, 6],
 ];
 
-
-function debugBoard(board) {
-  return board.map((cell) => cell || "-").join(" | ");
-}
-
-function debugMoveCount(board) {
-  return board.filter(Boolean).length;
-}
-
-
 class TicTacToe {
   constructor() {
     this.reset();
