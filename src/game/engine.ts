@@ -71,7 +71,3 @@ export function play(board: Board, index: number): Board {
   next[index] = currentPlayer(board);
   return next;
 }
-
-export function opponentOf(player: Player): Player {
-  return player === 'yang' ? 'yin' : 'yang';
-}

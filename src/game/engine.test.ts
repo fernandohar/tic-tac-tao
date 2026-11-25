@@ -5,7 +5,6 @@ import {
   currentPlayer,
   evaluate,
   isGameOver,
-  opponentOf,
   play,
   type Board,
 } from './engine';
@@ -108,12 +107,5 @@ describe('isGameOver', () => {
   it('is true on a win and on a draw', () => {
     expect(isGameOver(boardFrom('OOO XX. ...'))).toBe(true);
     expect(isGameOver(boardFrom('OXO XXO OOX'))).toBe(true);
-  });
-});
-
-describe('opponentOf', () => {
-  it('maps each player to the other', () => {
-    expect(opponentOf('yang')).toBe('yin');
-    expect(opponentOf('yin')).toBe('yang');
   });
 });
