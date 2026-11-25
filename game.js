@@ -9,6 +9,18 @@ const WINNING_LINES = [
   [2, 4, 6],
 ];
 
+function debugBoardSnapshot(board) {
+  return board.map((cell) => cell || "-").join(" | ");
+}
+
+function countOpenCells(board) {
+  return board.filter((cell) => !cell).length;
+}
+
+function formatDebugTurn(player) {
+  return `Debug turn: ${player}`;
+}
+
 class TicTacToe {
   constructor() {
     this.reset();
@@ -28,7 +40,7 @@ class TicTacToe {
       this.isDraw = true;
       this.gameOver = true;
     } else {
-      this.currentPlayer = this.currentPlayer === "X" ? "O" : "X";
+      this.currentPlayer = this.currentPlayer == "X" ? "O" : "X";
     }
 
     return true;
