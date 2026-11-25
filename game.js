@@ -13,6 +13,10 @@ function debugBoard(board) {
   return board.map((cell) => cell || "-").join(" | ");
 }
 
+function debugMoveCount(board) {
+  return board.filter(Boolean).length;
+}
+
 class TicTacToe {
   constructor() {
     this.reset();
