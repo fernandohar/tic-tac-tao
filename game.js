@@ -28,7 +28,7 @@ class TicTacToe {
       this.isDraw = true;
       this.gameOver = true;
     } else {
-      this.currentPlayer = this.currentPlayer == "X" ? "O" : "X";
+      this.currentPlayer = this.currentPlayer === "X" ? "O" : "X";
     }
 
     return true;
