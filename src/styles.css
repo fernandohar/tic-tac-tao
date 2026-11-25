@@ -1,0 +1,227 @@
+:root {
+  --ink: #f4f1ea;
+  --ink-dim: rgba(244, 241, 234, 0.62);
+  --void: #0b0d10;
+  --slate: #151920;
+  --edge: rgba(244, 241, 234, 0.1);
+  --yang: #f4f1ea;
+  --yin: #e0894a;
+  --glow: rgba(224, 137, 74, 0.35);
+
+  color-scheme: dark;
+  font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(1100px 620px at 50% -12%, #1d232c 0%, transparent 70%),
+    radial-gradient(760px 520px at 12% 108%, #19161b 0%, transparent 72%),
+    var(--void);
+  color: var(--ink);
+  display: flex;
+  justify-content: center;
+  padding: 3rem 1.25rem 4rem;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+  width: min(32rem, 100%);
+}
+
+.masthead {
+  text-align: center;
+}
+
+.masthead h1 {
+  margin: 0;
+  font-size: clamp(2.2rem, 7vw, 3.1rem);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
+.dot {
+  display: inline-block;
+  width: 0.34rem;
+  height: 0.34rem;
+  margin: 0 0.42rem 0.5rem;
+  border-radius: 50%;
+  background: var(--yin);
+  vertical-align: middle;
+}
+
+.subtitle {
+  margin: 0.6rem 0 0;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--ink-dim);
+}
+
+.panel {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.panel-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+.choices {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.choice {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+  padding: 0.65rem 0.5rem;
+  border: 1px solid var(--edge);
+  border-radius: 0.7rem;
+  background: var(--slate);
+  color: var(--ink-dim);
+  cursor: pointer;
+  transition: border-color 160ms ease, color 160ms ease, background 160ms ease;
+  font-family: inherit;
+}
+
+.choice:hover {
+  border-color: rgba(244, 241, 234, 0.28);
+  color: var(--ink);
+}
+
+.choice-active {
+  border-color: var(--yin);
+  background: rgba(224, 137, 74, 0.12);
+  color: var(--ink);
+}
+
+.choice-label {
+  font-size: 0.98rem;
+}
+
+.choice-hint {
+  font-size: 0.72rem;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  opacity: 0.72;
+}
+
+.status {
+  margin: 0;
+  min-height: 1.5rem;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.square {
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--edge);
+  border-radius: 1rem;
+  background: linear-gradient(160deg, #171c24 0%, #11141a 100%);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: clamp(2.2rem, 11vw, 3.4rem);
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 140ms ease, border-color 140ms ease, box-shadow 220ms ease;
+}
+
+.square:not(:disabled):hover {
+  transform: translateY(-2px);
+  border-color: rgba(244, 241, 234, 0.3);
+}
+
+.square:disabled {
+  cursor: default;
+}
+
+.square-yang {
+  color: var(--yang);
+}
+
+.square-yin {
+  color: var(--yin);
+}
+
+.square-winning {
+  border-color: var(--yin);
+  box-shadow: 0 0 0 1px var(--yin), 0 0 34px var(--glow);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+}
+
+.restart {
+  padding: 0.62rem 1.3rem;
+  border: 1px solid var(--edge);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: border-color 160ms ease, background 160ms ease;
+}
+
+.restart:hover {
+  border-color: var(--yin);
+  background: rgba(224, 137, 74, 0.1);
+}
+
+.tally {
+  display: flex;
+  gap: 1.4rem;
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+.tally div {
+  text-align: center;
+}
+
+.tally dt {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+.tally dd {
+  margin: 0.2rem 0 0;
+  font-size: 1.25rem;
+  font-family: inherit;
+}
