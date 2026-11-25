@@ -9,10 +9,6 @@ const WINNING_LINES = [
   [2, 4, 6],
 ];
 
-function debugBoard(board) {
-  return board.map((cell) => cell || "-").join(" | ");
-}
-
 class TicTacToe {
   constructor() {
     this.reset();
@@ -99,5 +95,5 @@ if (typeof document !== "undefined") {
 }
 
 if (typeof module !== "undefined") {
-  module.exports = { TicTacToe, WINNING_LINES, debugBoard };
+  module.exports = { TicTacToe, WINNING_LINES };
 }
